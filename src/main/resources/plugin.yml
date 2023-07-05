@@ -1,0 +1,10 @@
+main: dev.gether.getsklep.GetSklep
+name: GetSklep
+version: 1.0
+author: gether
+website: gether.dev
+api-version: 1.16
+commands:
+  getsklep:
+    aliases:
+      - sklep

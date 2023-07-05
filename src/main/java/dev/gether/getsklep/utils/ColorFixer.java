@@ -1,4 +1,4 @@
-package dev.gether.getitemshop.utils;
+package dev.gether.getsklep.utils;
 
 import org.bukkit.ChatColor;
 

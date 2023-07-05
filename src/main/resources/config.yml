@@ -1,0 +1,128 @@
+# /getsklep <vault, time> <cena> <slot> - permission: getsklep.admin
+# /getsklep - permission: getsklep.use
+
+lang:
+  success-buy: "&aPomyslnie zakupiono!"
+  no-money: "&cNie posiadasz tyle pieniedzy!"
+
+extra-line:
+  vault:
+    - "&6x Koszt: &f{price}&e$"
+    - "&7"
+    - "&7Kliknij aby kupic!"
+  time:
+    - "&6x Koszt: &f{price} &emonet czasu"
+    - "&7"
+    - "&7Kliknij aby kupic!"
+
+
+back:
+  material: BARRIER
+  displayname: "&cCofnij"
+  lore: []
+  slot: 49
+
+menu-confirm:
+  size: 45
+  title: "&0Kupowanie przedmiotu!"
+  back-slot: 39
+  # item z potwierdzeniem zakupu
+  confirm:
+    slot: 41
+    material: LIME_STAINED_GLASS_PANE
+    displayname: "&aZatwierdz zakup"
+    lore: []
+  # dodatkowe linie dodawane do itemku podczas kupowania
+  extra-line:
+    - "&7Ilosc: &f{amount}"
+    - "&6Cena: &f${price}"
+  # slot itemu ktory sie kupuje
+  item-buy-slot: 22
+  # lista stackow u gory w sklepie
+  # Pamietaj! ID musi byc LICZBA CALKOWITA
+  # Jest to mnoznik STACKOW
+  left:
+    set_1:
+      material: RED_STAINED_GLASS_PANE
+      displayname: "&cUstaw na 1"
+      lore: []
+      slot: 18
+    remove_16:
+      material: RED_STAINED_GLASS_PANE
+      displayname: "&cUsun 16"
+      lore: []
+      slot: 19
+    remove_1:
+      material: RED_STAINED_GLASS_PANE
+      displayname: "&cUsun 1"
+      lore: []
+      slot: 20
+  right:
+    add_1:
+      material: LIME_STAINED_GLASS_PANE
+      displayname: "&aDodaj 1"
+      lore: []
+      slot: 24
+    add_16:
+      material: LIME_STAINED_GLASS_PANE
+      displayname: "&aDodaj 16"
+      lore: []
+      slot: 25
+    set_64:
+      material: LIME_STAINED_GLASS_PANE
+      displayname: "&aUstaw na  64"
+      lore: []
+      slot: 26
+  stack:
+    2:
+      slot: 0
+      displayname: "&aUstaw na 2 stacki"
+      lore:
+        - "&7Kwota: &f{price}"
+    3:
+      slot: 1
+      displayname: "&aUstaw na 3 stacki"
+      lore:
+        - "&7Kwota: &f{price}"
+
+
+shop:
+  main:
+    size: 54
+    title: "&0Sklep: "
+    backgrounds:
+      '1':
+        material: BLACK_STAINED_GLASS_PANE
+        displayname: "&7"
+        lore: []
+        slots: [0,1,2,3,4,5,6,7,8]
+    icon-vault:
+      slot: 21
+      item:
+        material: GOLD_BLOCK
+        displayname: "&6&lSklep"
+        lore: []
+    icon-time:
+      slot: 23
+      item:
+        material: CLOCK
+        displayname: "&a&lSklep za czas"
+        lore: []
+  vault:
+    size: 54
+    title: "&0Sklep - Vault "
+    backgrounds:
+      '1':
+        material: ORANGE_STAINED_GLASS_PANE
+        displayname: "&7"
+        lore: [ ]
+        slots: [ 0,1,2,3,4,5,6,7,8 ]
+  time:
+    size: 54
+    title: "&0Sklep - Vault "
+    backgrounds:
+      '1':
+        material: RED_STAINED_GLASS_PANE
+        displayname: "&7"
+        lore: [ ]
+        slots: [ 0,1,2,3,4,5,6,7,8 ]
