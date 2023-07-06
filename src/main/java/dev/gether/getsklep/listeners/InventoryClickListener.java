@@ -2,15 +2,18 @@ package dev.gether.getsklep.listeners;
 
 import dev.gether.getsklep.GetSklep;
 import dev.gether.getsklep.data.ButtonData;
+import dev.gether.getsklep.data.ItemTime;
 import dev.gether.getsklep.data.ItemVault;
 import dev.gether.getsklep.data.User;
 import dev.gether.getsklep.manager.ShopManager;
+import dev.gether.getsklep.utils.ColorFixer;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
 
 public class InventoryClickListener implements Listener {
 
@@ -58,6 +61,20 @@ public class InventoryClickListener implements Listener {
                     player.openInventory(shopManager.getMainShop());
                     return;
                 }
+                ItemTime timeItem = plugin.getShopManager().getTimeItems().get(event.getSlot());
+                if(timeItem==null)
+                    return;
+
+                Integer integer = plugin.getUserSpentPoints().get(player.getUniqueId());
+                if(integer==null || !plugin.getShopManager().hasPoints(player, timeItem.getCost()))
+                {
+                    player.sendMessage(ColorFixer.addColors(plugin.getConfig().getString("lang.no-points")));
+                    return;
+                }
+                plugin.getShopManager().takePoints(player, timeItem.getCost());
+                player.getInventory().addItem(timeItem.getItemStack());
+                player.sendMessage(ColorFixer.addColors(plugin.getConfig().getString("lang.success-buy")));
+                return;
             }
             return;
         }
@@ -79,6 +96,32 @@ public class InventoryClickListener implements Listener {
                 if(event.getClick()== ClickType.LEFT) {
                     plugin.getShopManager().getUserBuyData().put(player.getUniqueId(), user);
                     player.openInventory(user.getInventory());
+                    return;
+                }
+                if(event.getClick()==ClickType.RIGHT)
+                {
+                    int amount = plugin.getShopManager().calcItem(player, itemVault.getItemStack());
+                    if(amount<=0)
+                    {
+                        player.sendMessage(ColorFixer.addColors(plugin.getConfig().getString("lang.no-item")));
+                        return;
+                    }
+                    plugin.getShopManager().removeItem(player, itemVault.getItemStack().clone(), 1);
+                    plugin.getEcon().depositPlayer(player, 1*itemVault.getCost());
+                    player.sendMessage(ColorFixer.addColors(plugin.getConfig().getString("lang.success-sell")));
+                    return;
+                }
+                if(event.getClick()==ClickType.SHIFT_RIGHT)
+                {
+                    int amount = plugin.getShopManager().calcItem(player, itemVault.getItemStack());
+                    if(amount<=0)
+                    {
+                        player.sendMessage(ColorFixer.addColors(plugin.getConfig().getString("lang.no-item")));
+                        return;
+                    }
+                    plugin.getShopManager().removeItem(player, itemVault.getItemStack().clone(), amount);
+                    plugin.getEcon().depositPlayer(player, amount*itemVault.getCost());
+                    player.sendMessage(ColorFixer.addColors(plugin.getConfig().getString("lang.success-sell-all")));
                     return;
                 }
             }
@@ -113,7 +156,8 @@ public class InventoryClickListener implements Listener {
                 for (ButtonData buttonData : plugin.getShopManager().getButtonManager().getButtonDataList()) {
                     if(event.getSlot()==buttonData.getSlot())
                     {
-                        if(event.getInventory().getItem(event.getSlot()).getType()== Material.AIR)
+                        ItemStack item = event.getInventory().getItem(event.getSlot());
+                        if(item==null || item.getType()==Material.AIR)
                             continue;
 
                         user.clickType(buttonData.getButtonType());

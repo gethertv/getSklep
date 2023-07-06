@@ -4,29 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d7ec7a4-339b-413c-8aca-562afe47896c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/data/ButtonData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/data/ItemTime.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/data/ItemVault.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/data/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/file/TimeFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/file/VaultFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/listeners/PlayerJoinListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/manager/ButtonManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/manager/ButtonType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/time-items.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/vault-items.yml" afterDir="false" />
+    <list default="true" id="4d7ec7a4-339b-413c-8aca-562afe47896c" name="Changes" comment="1.0.1">
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/database/SQLite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/placeholder/TimePointsHolder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/task/AutoSave.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/GetSklep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/GetSklep.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/cmd/SklepCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/cmd/SklepCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/data/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/data/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/listeners/InventoryClickListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/listeners/InventoryClickListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/listeners/PlayerJoinListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/listeners/PlayerJoinListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/manager/ShopManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/manager/ShopManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/manager/ShopType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/manager/ShopType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/utils/ColorFixer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/utils/ColorFixer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +53,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/getSklep/src/main/resources",
+    "last_opened_file_path": "D:/EnderchestPlus",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -80,6 +70,8 @@
       <recent name="D:\getSklep\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="dev.gether.getsklep.placeholder" />
+      <recent name="dev.gether.getsklep.database" />
       <recent name="dev.gether.getsklep.file" />
       <recent name="dev.gether.getsklep.utils" />
     </key>
@@ -123,11 +115,37 @@
       <workItem from="1688512806079" duration="1401000" />
       <workItem from="1688514307193" duration="1813000" />
       <workItem from="1688567022419" duration="4662000" />
-      <workItem from="1688583305124" duration="10265000" />
+      <workItem from="1688583305124" duration="10619000" />
+      <workItem from="1688654945394" duration="1459000" />
+      <workItem from="1688658965162" duration="836000" />
+      <workItem from="1688667372537" duration="9112000" />
     </task>
+    <task id="LOCAL-00001" summary="1.0.1">
+      <created>1688594113823</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1688594113823</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1.0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.0.1" />
   </component>
 </project>

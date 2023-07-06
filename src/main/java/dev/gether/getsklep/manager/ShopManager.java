@@ -9,8 +9,10 @@ import dev.gether.getsklep.file.VaultFile;
 import dev.gether.getsklep.utils.ColorFixer;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Statistic;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -39,10 +41,16 @@ public class ShopManager {
     private HashMap<UUID, User> userBuyData = new HashMap<>();
 
     private ButtonManager buttonManager;
+
+    private int timePointsValue;
+    private int timeConverter;
     public ShopManager(GetSklep plugin)
     {
         this.plugin = plugin;
 
+        // przelicznik co ile sekund ma sie otrzymywac points
+        timeConverter = plugin.getConfig().getInt("points.time");
+        timePointsValue = plugin.getConfig().getInt("points.value");
         createInventory();
         fillBackground();
         implementMainShopIcon();
@@ -50,6 +58,7 @@ public class ShopManager {
         addButtonBack();
         TimeFile.loadFile();
         VaultFile.loadFile();
+
         implementItems(TimeFile.getConfig(), timeShop, ShopType.TIME);
         implementItems(VaultFile.getConfig(), vaultShop, ShopType.VAULT);
 
@@ -183,6 +192,46 @@ public class ShopManager {
         return inventory;
     }
 
+    public void removeItem(Player player, ItemStack fromItem, int amount)
+    {
+        int removeItem = amount;
+
+
+        for(ItemStack itemStack : player.getInventory()) {
+            if(itemStack==null || itemStack.getType()== Material.AIR)
+                continue;
+
+            if(itemStack.isSimilar(fromItem))
+            {
+                if(removeItem<=0)
+                    break;
+
+                if(itemStack.getAmount()<=removeItem)
+                {
+                    removeItem-=itemStack.getAmount();
+                    itemStack.setAmount(0);
+                } else {
+                    itemStack.setAmount(itemStack.getAmount()-removeItem);
+                    removeItem=0;
+                }
+            }
+        }
+    }
+
+    public int calcItem(Player player, ItemStack fromItem)
+    {
+        int amount = 0;
+        for(ItemStack itemStack : player.getInventory())
+        {
+            if(itemStack==null || itemStack.getType()== Material.AIR)
+                continue;
+
+            if(itemStack.isSimilar(fromItem))
+                amount+=itemStack.getAmount();
+        }
+
+        return amount;
+    }
     public void saveItem(FileConfiguration config, ItemStack itemStack, double cost, int slot)
     {
         ItemStack item = itemStack.clone();
@@ -200,6 +249,49 @@ public class ShopManager {
         VaultFile.save();
         TimeFile.save();
     }
+
+    public int getPlayerPoints(Player player)
+    {
+        Integer spentPoints = plugin.getUserSpentPoints().get(player.getUniqueId());
+        if(spentPoints==null)
+            return 0;
+
+
+        int sec = player.getStatistic(Statistic.PLAY_ONE_MINUTE)/20;
+        int amount = sec/plugin.getShopManager().getTimeConverter();
+        int points = (amount*plugin.getShopManager().getTimePointsValue())-spentPoints;
+        if(points<0)
+        {
+            plugin.getUserSpentPoints().put(player.getUniqueId(), 0);
+            points = 0;
+        }
+        return points;
+    }
+
+    public boolean hasPoints(Player player, int amount)
+    {
+        int points = getPlayerPoints(player);
+        if(points>=amount)
+            return true;
+
+        return false;
+    }
+
+    public void takePoints(Player player, int amount)
+    {
+        Integer spentPoints = plugin.getUserSpentPoints().get(player.getUniqueId());
+        if(spentPoints==null) return;
+
+        plugin.getUserSpentPoints().put(player.getUniqueId(), spentPoints+amount);
+    }
+    public int getTimeConverter() {
+        return timeConverter;
+    }
+
+    public int getTimePointsValue() {
+        return timePointsValue;
+    }
+
     public Inventory getMainShop() {
         return mainShop;
     }

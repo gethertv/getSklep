@@ -4,6 +4,19 @@
 lang:
   success-buy: "&aPomyslnie zakupiono!"
   no-money: "&cNie posiadasz tyle pieniedzy!"
+  no-item: "&cNie posiadasz przedmiotu!"
+  success-sell: "&aPomyslnie sprzedano item!"
+  success-sell-all: "&aPomyslnie sprzedano wszystkie przedmioty!"
+  no-points: "&cNie posiadasz tyle punktow"
+
+
+
+
+points:
+  # co ile sekund ma sie otrzymac punkty
+  time: 60
+  # ilosc punktow jaka ma sie otrzymac po okreslonym czasie
+  value: 1
 
 extra-line:
   vault:
@@ -84,8 +97,41 @@ menu-confirm:
       displayname: "&aUstaw na 3 stacki"
       lore:
         - "&7Kwota: &f{price}"
-
-
+    4:
+      slot: 2
+      displayname: "&aUstaw na 4 stacki"
+      lore:
+        - "&7Kwota: &f{price}"
+    5:
+      slot: 3
+      displayname: "&aUstaw na 5 stackow"
+      lore:
+        - "&7Kwota: &f{price}"
+    6:
+      slot: 4
+      displayname: "&aUstaw na 6 stackow"
+      lore:
+        - "&7Kwota: &f{price}"
+    7:
+      slot: 5
+      displayname: "&aUstaw na 7 stackow"
+      lore:
+        - "&7Kwota: &f{price}"
+    8:
+      slot: 6
+      displayname: "&aUstaw na 8 stackow"
+      lore:
+        - "&7Kwota: &f{price}"
+    9:
+      slot: 7
+      displayname: "&aUstaw na 9 stackow"
+      lore:
+        - "&7Kwota: &f{price}"
+    10:
+      slot: 8
+      displayname: "&aUstaw na 10 stackow"
+      lore:
+        - "&7Kwota: &f{price}"
 shop:
   main:
     size: 54

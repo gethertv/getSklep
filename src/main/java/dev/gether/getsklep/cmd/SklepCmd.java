@@ -52,8 +52,14 @@ public class SklepCmd implements CommandExecutor, TabCompleter {
                         player.sendMessage(ColorFixer.addColors("&cMusisz podac liczbe calkowita!"));
                         return false;
                     }
+
                     double cost = Double.parseDouble(args[1]);
                     int slot = Integer.parseInt(args[2]);
+                    if(slot>=plugin.getShopManager().getVaultShop().getSize()-1)
+                    {
+                        player.sendMessage(ColorFixer.addColors("&cNie mozesz ustawic wiekszego slota niz rozmiar idventory!"));
+                        return false;
+                    }
                     plugin.getShopManager().saveItem(VaultFile.getConfig(), itemStack, cost, slot);
                     player.sendMessage(ColorFixer.addColors("&aPomyslnie zapisano item.\n&aPamietaj o przeladowaniu pluginu!"));
                     return true;
@@ -73,8 +79,25 @@ public class SklepCmd implements CommandExecutor, TabCompleter {
                     }
                     int cost = Integer.parseInt(args[1]);
                     int slot = Integer.parseInt(args[2]);
+                    if(slot>=plugin.getShopManager().getTimeShop().getSize()-1)
+                    {
+                        player.sendMessage(ColorFixer.addColors("&cNie mozesz ustawic wiekszego slota niz rozmiar idventory!"));
+                        return false;
+                    }
                     plugin.getShopManager().saveItem(TimeFile.getConfig(), itemStack, cost, slot);
                     player.sendMessage(ColorFixer.addColors("&aPomyslnie zapisano item.\n&aPamietaj o przeladowaniu pluginu!"));
+                    return true;
+                }
+            }
+        }
+        if(args.length==1)
+        {
+            if(player.hasPermission("getsklep.admin"))
+            {
+                if(args[0].equalsIgnoreCase("reload"))
+                {
+                    plugin.reloadPlugin();
+                    player.sendMessage(ColorFixer.addColors("&aPomyslnie przeladowano plugin!"));
                     return true;
                 }
             }

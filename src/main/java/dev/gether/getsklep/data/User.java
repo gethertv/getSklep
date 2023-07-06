@@ -50,8 +50,9 @@ public class User {
             return;
         }
         GetSklep.getEcon().withdrawPlayer(player, price);
-        itemStack.setAmount(amount);
-        player.getInventory().addItem(itemStack);
+        ItemStack item = itemVault.getItemStack().clone();
+        item.setAmount(amount);
+        player.getInventory().addItem(item);
         player.sendMessage(ColorFixer.addColors(config.getString("lang.success-buy")));
         player.closeInventory();
     }
