@@ -2,38 +2,49 @@
 # /getsklep - permission: getsklep.use
 
 lang:
-  success-buy: "&aPomyslnie zakupiono!"
-  no-money: "&cNie posiadasz tyle pieniedzy!"
-  no-item: "&cNie posiadasz przedmiotu!"
-  success-sell: "&aPomyslnie sprzedano item!"
-  success-sell-all: "&aPomyslnie sprzedano wszystkie przedmioty!"
-  no-points: "&cNie posiadasz tyle punktow"
+  success-buy: "&aKupiono przedmioty za &2{price}"
+  no-money: "&cBy kupić ten przedmiot potrzebujesz jeszcze {need-money}"
+  no-item: "&cNie posiadasz &2{item}&c!"
+  success-sell: "&cSprzedano za $&4{money}"
+  success-sell-all: "&cSprzedano za $&4{money}"
+  no-points: "&cNie posiadasz wystarczającej ilości monet czasu!"
 
-
-
+# skrocony format waluty
+price-format: "{value}{symbol}"
+symbol:
+  mld: "MLD"
+  mln: "M"
+  tys: "k"
+  bilion: "B"
+  biliard: "BLD"
+  try: "TLD"
 
 points:
   # co ile sekund ma sie otrzymac punkty
-  time: 60
+  time: 300
   # ilosc punktow jaka ma sie otrzymac po okreslonym czasie
   value: 1
 
 extra-line:
   vault:
-    - "&6x Koszt: &f{price}&e$"
-    - "&7"
-    - "&7Kliknij aby kupic!"
+    - "&8x &6Kwota zakupu: &a{price}"
+    - "&8x &6Kwota sprzedazy: &c{price}"
+    - ""
+    - "&e&lINSTRUKCJA:"
+    - "&8x &7Kliknij &bLPM &7aby &akupic &7dany przedmiot!"
+    - "&8x &7Kliknij &bPPM &7aby &csprzedac &7dany przedmiot!"
+    - "&8x &7Kliknij &bPPM + SHIFT &7aby wszystko sprzedac!"
   time:
-    - "&6x Koszt: &f{price} &emonet czasu"
-    - "&7"
-    - "&7Kliknij aby kupic!"
-
+    - "&8x &6Koszt: &f{price} monet czasu"
+    - ""
+    - "&e&lINSTRUKCJA:"
+    - "&8x &7Kliknij &7aby &akupić przedmiot!"
 
 back:
   material: BARRIER
   displayname: "&cCofnij"
   lore: []
-  slot: 49
+  slot: 40
 
 menu-confirm:
   size: 45
@@ -134,41 +145,75 @@ menu-confirm:
         - "&7Kwota: &f{price}"
 shop:
   main:
-    size: 54
-    title: "&0Sklep: "
+    size: 45
+    title: "&x&b&5&1&1&e&4&lS&x&8&d&2&a&d&c&lk&x&6&5&4&2&d&4&ll&x&3&d&5&b&c&b&le&x&1&5&7&3&c&3&lp "
     backgrounds:
       '1':
-        material: BLACK_STAINED_GLASS_PANE
+        material: YELLOW_STAINED_GLASS_PANE
         displayname: "&7"
         lore: []
-        slots: [0,1,2,3,4,5,6,7,8]
+        slots: [0,8,36,44]
+      '2':
+        material: ORANGE_STAINED_GLASS_PANE
+        displayname: "&7"
+        lore: []
+        slots: [1,7,9,17,27,35,37,43]
+      '3':
+        material: WHITE_STAINED_GLASS_PANE
+        displayname: "&7"
+        lore: []
+        slots: [2,3,5,6,18,26,38,39,41,42]
     icon-vault:
       slot: 21
       item:
         material: GOLD_BLOCK
-        displayname: "&6&lSklep"
+        displayname: "&x&f&b&e&5&4&8&lS&x&f&a&e&b&5&2&lk&x&f&8&f&1&5&b&ll&x&f&7&f&7&6&5&le&x&f&5&f&d&6&e&lp"
         lore: []
     icon-time:
       slot: 23
       item:
         material: CLOCK
-        displayname: "&a&lSklep za czas"
-        lore: []
+        displayname: "&x&c&a&9&7&d&0&lS&x&c&9&9&2&c&5&lk&x&c&9&8&d&b&a&ll&x&c&8&8&7&a&f&le&x&c&7&8&2&a&4&lp &x&c&7&7&d&9&a&lz&x&c&6&7&8&8&f&la &x&c&5&7&3&8&4&lc&x&c&4&6&d&7&9&lz&x&c&4&6&8&6&e&la&x&c&3&6&3&6&3&ls"
+        lore:
+          - "&8x &7Za każde &a5 minut &7gry na serwerze"
+          - "&8x &7otrzymujesz &61 monetę czasu&7."
+          - "&8x &7Monety możesz zakupić również"
+          - "&8x &7na naszej stronie &6minestar.pl"
   vault:
-    size: 54
-    title: "&0Sklep - Vault "
+    size: 45
+    title: "&x&f&b&e&5&4&8&lS&x&f&a&e&b&5&2&lk&x&f&8&f&1&5&b&ll&x&f&7&f&7&6&5&le&x&f&5&f&d&6&e&lp"
     backgrounds:
       '1':
+        material: YELLOW_STAINED_GLASS_PANE
+        displayname: "&7"
+        lore: []
+        slots: [0,8,36,44]
+      '2':
         material: ORANGE_STAINED_GLASS_PANE
         displayname: "&7"
-        lore: [ ]
-        slots: [ 0,1,2,3,4,5,6,7,8 ]
+        lore: []
+        slots: [1,7,9,17,27,35,37,43]
+      '3':
+        material: WHITE_STAINED_GLASS_PANE
+        displayname: "&7"
+        lore: []
+        slots: [2,3,5,6,18,26,38,39,41,42]
   time:
-    size: 54
-    title: "&0Sklep - Vault "
+    size: 45
+    title: "&x&c&a&9&7&d&0&lS&x&c&9&9&2&c&5&lk&x&c&9&8&d&b&a&ll&x&c&8&8&7&a&f&le&x&c&7&8&2&a&4&lp &x&c&7&7&d&9&a&lz&x&c&6&7&8&8&f&la &x&c&5&7&3&8&4&lc&x&c&4&6&d&7&9&lz&x&c&4&6&8&6&e&la&x&c&3&6&3&6&3&ls"
     backgrounds:
       '1':
-        material: RED_STAINED_GLASS_PANE
+        material: YELLOW_STAINED_GLASS_PANE
         displayname: "&7"
-        lore: [ ]
-        slots: [ 0,1,2,3,4,5,6,7,8 ]
+        lore: []
+        slots: [0,8,36,44]
+      '2':
+        material: ORANGE_STAINED_GLASS_PANE
+        displayname: "&7"
+        lore: []
+        slots: [1,7,9,17,27,35,37,43]
+      '3':
+        material: WHITE_STAINED_GLASS_PANE
+        displayname: "&7"
+        lore: []
+        slots: [2,3,5,6,18,26,38,39,41,42]

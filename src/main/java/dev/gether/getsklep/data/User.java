@@ -42,18 +42,23 @@ public class User {
 
     public void buy(Player player)
     {
-        FileConfiguration config = GetSklep.getInstance().getConfig();
+        GetSklep instance = GetSklep.getInstance();
+        FileConfiguration config = instance.getConfig();
+
         double price = amount* itemVault.getCost();
         if(!GetSklep.getEcon().has(player, price))
         {
-            player.sendMessage(ColorFixer.addColors(config.getString("lang.no-money")));
+            double diff = price - GetSklep.getEcon().getBalance(player);
+            player.sendMessage(ColorFixer.addColors(config.getString("lang.no-money")
+                    .replace("{need-money}",instance.getShopManager().getFormat(diff))));
             return;
         }
         GetSklep.getEcon().withdrawPlayer(player, price);
         ItemStack item = itemVault.getItemStack().clone();
         item.setAmount(amount);
         player.getInventory().addItem(item);
-        player.sendMessage(ColorFixer.addColors(config.getString("lang.success-buy")));
+        player.sendMessage(ColorFixer.addColors(config.getString("lang.success-buy")
+                .replace("{price}", instance.getShopManager().getFormat(price))));
         player.closeInventory();
     }
 
@@ -96,7 +101,7 @@ public class User {
         {
             lore.add(
                     line.replace("{amount}", String.valueOf(amount))
-                        .replace("{price}", String.valueOf(price))
+                        .replace("{price}", GetSklep.getInstance().getShopManager().getFormat(price))
             );
         }
         itemMeta.setLore(ColorFixer.addColors(lore));
@@ -166,7 +171,7 @@ public class User {
             double cost = multiply * itemVault.getCost() * 64;
             for(String line : stackSection.getStringList(".lore"))
             {
-                lore.add(line.replace("{price}", String.valueOf(cost)));
+                lore.add(line.replace("{price}", GetSklep.getInstance().getShopManager().getFormat(cost)));
             }
             itemMeta.setLore(ColorFixer.addColors(lore));
             item.setItemMeta(itemMeta);

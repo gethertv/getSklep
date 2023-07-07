@@ -88,6 +88,8 @@ public class SklepCmd implements CommandExecutor, TabCompleter {
                     player.sendMessage(ColorFixer.addColors("&aPomyslnie zapisano item.\n&aPamietaj o przeladowaniu pluginu!"));
                     return true;
                 }
+                player.sendMessage(ColorFixer.addColors("&7/sklep vault/price {cena} {slot}"));
+                return false;
             }
         }
         if(args.length==1)

@@ -17,6 +17,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,6 +45,8 @@ public class ShopManager {
 
     private int timePointsValue;
     private int timeConverter;
+
+    private DecimalFormat decimalFormat = new DecimalFormat("##0.##");
     public ShopManager(GetSklep plugin)
     {
         this.plugin = plugin;
@@ -163,7 +166,7 @@ public class ShopManager {
             ItemMeta itemMeta = itemStack.getItemMeta();
             int slot = itemSection.getInt(".slot");
             List<String> lore = new ArrayList<>();
-            if(itemMeta!=null)
+            if(itemMeta.getLore()!=null)
                 lore.addAll(itemMeta.getLore());
 
             if(shopType==ShopType.VAULT)
@@ -172,7 +175,7 @@ public class ShopManager {
                 vaultItems.put(slot, new ItemVault(itemBuy, cost));
                 for(String line : plugin.getConfig().getStringList("extra-line.vault"))
                 {
-                    lore.add(line.replace("{price}", String.valueOf(cost)));
+                    lore.add(line.replace("{price}", getFormat(cost)));
                 }
             }
             if(shopType==ShopType.TIME)
@@ -181,7 +184,7 @@ public class ShopManager {
                 timeItems.put(slot, new ItemTime(itemBuy, cost));
                 for(String line : plugin.getConfig().getStringList("extra-line.time"))
                 {
-                    lore.add(line.replace("{price}", String.valueOf(cost)));
+                    lore.add(line.replace("{price}", getFormat(cost)));
                 }
             }
             itemMeta.setLore(ColorFixer.addColors(lore));
@@ -276,7 +279,36 @@ public class ShopManager {
 
         return false;
     }
+    public String getFormat(double amount) {
+        String format = plugin.getConfig().getString("price-format");
+        String symbol = "";
+        double calc = 1;
 
+        if (amount >= 1E18) {
+            amount /= 1E18;
+            symbol =  plugin.getConfig().getString("symbol.try");
+        } else if (amount >= 1E15) {
+            amount /= 1E15;
+            symbol =  plugin.getConfig().getString("symbol.biliard");
+        } else if (amount >= 1E12) {
+            amount /= 1E12;
+            symbol =  plugin.getConfig().getString("symbol.bilion");
+        } else if (amount >= 1E9) {
+            amount /= 1E9;
+            symbol =  plugin.getConfig().getString("symbol.mld");
+        } else if (amount >= 1E6) {
+            amount /= 1E6;
+            symbol =  plugin.getConfig().getString("symbol.mln");
+        }
+        else if (amount >= 1000) {
+            amount /= 1000;
+            symbol =  plugin.getConfig().getString("symbol.mln");
+        }
+        format = format.replace("{value}", decimalFormat.format(amount))
+                    .replace("{symbol}",symbol);
+
+        return format;
+    }
     public void takePoints(Player player, int amount)
     {
         Integer spentPoints = plugin.getUserSpentPoints().get(player.getUniqueId());

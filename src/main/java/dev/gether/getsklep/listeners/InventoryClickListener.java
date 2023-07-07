@@ -73,7 +73,12 @@ public class InventoryClickListener implements Listener {
                 }
                 plugin.getShopManager().takePoints(player, timeItem.getCost());
                 player.getInventory().addItem(timeItem.getItemStack());
-                player.sendMessage(ColorFixer.addColors(plugin.getConfig().getString("lang.success-buy")));
+                player.sendMessage(
+                        ColorFixer.addColors(
+                            plugin.getConfig().getString("lang.success-buy")
+                                    .replace("{price}", String.valueOf(timeItem.getCost()))
+                        )
+                );
                 return;
             }
             return;
@@ -103,12 +108,17 @@ public class InventoryClickListener implements Listener {
                     int amount = plugin.getShopManager().calcItem(player, itemVault.getItemStack());
                     if(amount<=0)
                     {
-                        player.sendMessage(ColorFixer.addColors(plugin.getConfig().getString("lang.no-item")));
+                        player.sendMessage(ColorFixer.addColors(plugin.getConfig().getString("lang.no-item")
+                                    .replace("{item}", (itemVault.getItemStack().getItemMeta().getDisplayName()!=null) ?
+                                            itemVault.getItemStack().getItemMeta().getDisplayName() :
+                                            itemVault.getItemStack().getType().name())
+                        ));
                         return;
                     }
                     plugin.getShopManager().removeItem(player, itemVault.getItemStack().clone(), 1);
                     plugin.getEcon().depositPlayer(player, 1*itemVault.getCost());
-                    player.sendMessage(ColorFixer.addColors(plugin.getConfig().getString("lang.success-sell")));
+                    player.sendMessage(ColorFixer.addColors(plugin.getConfig().getString("lang.success-sell")
+                            .replace("{money}", plugin.getShopManager().getFormat(itemVault.getCost()))));
                     return;
                 }
                 if(event.getClick()==ClickType.SHIFT_RIGHT)
@@ -116,12 +126,17 @@ public class InventoryClickListener implements Listener {
                     int amount = plugin.getShopManager().calcItem(player, itemVault.getItemStack());
                     if(amount<=0)
                     {
-                        player.sendMessage(ColorFixer.addColors(plugin.getConfig().getString("lang.no-item")));
+                        player.sendMessage(ColorFixer.addColors(plugin.getConfig().getString("lang.no-item")
+                                            .replace("{item}", (itemVault.getItemStack().getItemMeta().getDisplayName()!=null) ?
+                                                    itemVault.getItemStack().getItemMeta().getDisplayName() :
+                                                    itemVault.getItemStack().getType().name())
+                        ));
                         return;
                     }
                     plugin.getShopManager().removeItem(player, itemVault.getItemStack().clone(), amount);
                     plugin.getEcon().depositPlayer(player, amount*itemVault.getCost());
-                    player.sendMessage(ColorFixer.addColors(plugin.getConfig().getString("lang.success-sell-all")));
+                    player.sendMessage(ColorFixer.addColors(plugin.getConfig().getString("lang.success-sell-all")
+                            .replace("{money}", plugin.getShopManager().getFormat(amount*itemVault.getCost()))));
                     return;
                 }
             }
