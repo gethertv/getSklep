@@ -298,7 +298,7 @@ public class ShopManager {
             symbol =  plugin.getConfig().getString("symbol.mld");
         } else if (amount >= 1E6) {
             amount /= 1E6;
-            symbol =  plugin.getConfig().getString("symbol.mln");
+            symbol =  plugin.getConfig().getString("symbol.tys");
         }
         else if (amount >= 1000) {
             amount /= 1000;

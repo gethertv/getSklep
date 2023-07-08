@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d7ec7a4-339b-413c-8aca-562afe47896c" name="Changes" comment="1.0.2">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/cmd/SklepCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/cmd/SklepCmd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/data/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/data/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/listeners/InventoryClickListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/listeners/InventoryClickListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/manager/ShopManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/manager/ShopManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/placeholder/TimePointsHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/placeholder/TimePointsHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
-    </list>
+    <list default="true" id="4d7ec7a4-339b-413c-8aca-562afe47896c" name="Changes" comment="1.0.2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -115,7 +106,7 @@
       <workItem from="1688654945394" duration="1459000" />
       <workItem from="1688658965162" duration="836000" />
       <workItem from="1688667372537" duration="11366000" />
-      <workItem from="1688757227556" duration="5285000" />
+      <workItem from="1688757227556" duration="5587000" />
     </task>
     <task id="LOCAL-00001" summary="1.0.1">
       <created>1688594113823</created>
@@ -131,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688680614969</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="1.0.2">
+      <created>1688765931828</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1688765931828</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
