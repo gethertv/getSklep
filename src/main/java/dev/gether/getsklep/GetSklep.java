@@ -157,4 +157,5 @@ public class GetSklep extends JavaPlugin {
     public ShopManager getShopManager() {
         return shopManager;
     }
+
 }

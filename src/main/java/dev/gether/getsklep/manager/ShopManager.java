@@ -35,6 +35,9 @@ public class ShopManager {
     private int slotOpenTimeShop = 0;
     private int slotOpenVaultShop = 0;
 
+    private boolean enableShopVault;
+    private boolean enableShopTimer;
+
     private HashMap<Integer, ItemVault> vaultItems = new HashMap<>();
     private HashMap<Integer, ItemTime> timeItems = new HashMap<>();
 
@@ -54,6 +57,9 @@ public class ShopManager {
         // przelicznik co ile sekund ma sie otrzymywac points
         timeConverter = plugin.getConfig().getInt("points.time");
         timePointsValue = plugin.getConfig().getInt("points.value");
+        enableShopVault = plugin.getConfig().getBoolean("shop.vault.enable");
+        enableShopTimer = plugin.getConfig().getBoolean("shop.time.enable");
+
         createInventory();
         fillBackground();
         implementMainShopIcon();
@@ -79,23 +85,28 @@ public class ShopManager {
 
     private void implementMainShopIcon()
     {
+
         /*
             SECTION SHOP TIME
          */
         {
-            ConfigurationSection section = plugin.getConfig().getConfigurationSection("shop.main.icon-time");
-            slotOpenTimeShop  = section.getInt(".slot");
-            ItemStack itemStack = itemFromConfig(section.getConfigurationSection(".item"));
-            mainShop.setItem(slotOpenTimeShop, itemStack);
+            if(isEnableShopTimer()) {
+                ConfigurationSection section = plugin.getConfig().getConfigurationSection("shop.main.icon-time");
+                slotOpenTimeShop = section.getInt(".slot");
+                ItemStack itemStack = itemFromConfig(section.getConfigurationSection(".item"));
+                mainShop.setItem(slotOpenTimeShop, itemStack);
+            }
         }
         /*
             SECTION SHOP VAULT
          */
         {
-            ConfigurationSection section = plugin.getConfig().getConfigurationSection("shop.main.icon-vault");
-            slotOpenVaultShop = section.getInt(".slot");
-            ItemStack itemStack = itemFromConfig(section.getConfigurationSection(".item"));
-            mainShop.setItem(slotOpenVaultShop, itemStack);
+            if(isEnableShopVault()) {
+                ConfigurationSection section = plugin.getConfig().getConfigurationSection("shop.main.icon-vault");
+                slotOpenVaultShop = section.getInt(".slot");
+                ItemStack itemStack = itemFromConfig(section.getConfigurationSection(".item"));
+                mainShop.setItem(slotOpenVaultShop, itemStack);
+            }
         }
     }
     private void fillBackground() {
@@ -358,5 +369,13 @@ public class ShopManager {
 
     public int getSlotOpenVaultShop() {
         return slotOpenVaultShop;
+    }
+
+    public boolean isEnableShopTimer() {
+        return enableShopTimer;
+    }
+
+    public boolean isEnableShopVault() {
+        return enableShopVault;
     }
 }

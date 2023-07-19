@@ -4,6 +4,7 @@ version: 1.0
 author: gether
 website: gether.dev
 api-version: 1.16
+softdepend: [PlaceholderAPI]
 commands:
   getsklep:
     aliases:

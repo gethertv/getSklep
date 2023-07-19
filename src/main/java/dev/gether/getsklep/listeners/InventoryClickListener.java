@@ -7,6 +7,7 @@ import dev.gether.getsklep.data.ItemVault;
 import dev.gether.getsklep.data.User;
 import dev.gether.getsklep.manager.ShopManager;
 import dev.gether.getsklep.utils.ColorFixer;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -40,11 +41,17 @@ public class InventoryClickListener implements Listener {
             {
                 if(event.getSlot()==shopManager.getSlotOpenTimeShop())
                 {
+                    if(!shopManager.isEnableShopTimer())
+                        return;
+
                     player.openInventory(shopManager.getTimeShop());
                     return;
                 }
                 if(event.getSlot()==shopManager.getSlotOpenVaultShop())
                 {
+                    if(!shopManager.isEnableShopVault())
+                        return;
+
                     player.openInventory(shopManager.getVaultShop());
                     return;
                 }
@@ -183,4 +190,5 @@ public class InventoryClickListener implements Listener {
             }
         }
     }
+
 }

@@ -59,6 +59,7 @@ public class User {
         player.getInventory().addItem(item);
         player.sendMessage(ColorFixer.addColors(config.getString("lang.success-buy")
                 .replace("{price}", instance.getShopManager().getFormat(price))));
+
         player.closeInventory();
     }
 
@@ -146,7 +147,7 @@ public class User {
             }
             if(buttonData.getButtonType()== ButtonType.REMOVE_16)
             {
-                if(amount>=16 && amount <=64 && amount%16==0)
+                if(amount>16)
                     inventory.setItem(buttonData.getSlot(), buttonData.getItemStack());
             }
         }
