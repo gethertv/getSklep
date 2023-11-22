@@ -145,6 +145,7 @@ menu-confirm:
         - "&7Kwota: &f{price}"
 shop:
   main:
+    enable: true
     size: 45
     title: "&x&b&5&1&1&e&4&lS&x&8&d&2&a&d&c&lk&x&6&5&4&2&d&4&ll&x&3&d&5&b&c&b&le&x&1&5&7&3&c&3&lp "
     backgrounds:
