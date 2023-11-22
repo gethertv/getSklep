@@ -94,6 +94,25 @@ public class SklepCmd implements CommandExecutor, TabCompleter {
         }
         if(args.length==1)
         {
+            if(args[0].equalsIgnoreCase("reload"))
+            {
+                if(!player.hasPermission("getsklep.vault"))
+                    return false;
+
+                player.openInventory(plugin.getShopManager().getVaultShop());
+                return true;
+
+            }
+
+            if(player.hasPermission("getsklep.time"))
+            {
+                if(!player.hasPermission("getsklep.time"))
+                    return false;
+
+                player.openInventory(plugin.getShopManager().getTimeShop());
+                return true;
+
+            }
             if(player.hasPermission("getsklep.admin"))
             {
                 if(args[0].equalsIgnoreCase("reload"))

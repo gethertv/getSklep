@@ -4,21 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d7ec7a4-339b-413c-8aca-562afe47896c" name="Changes" comment="1.0.4">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="4d7ec7a4-339b-413c-8aca-562afe47896c" name="Changes" comment="1.0.5">
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/config/DatabaseConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/database/Database.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/database/DatabaseType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/database/MySQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/GetSklep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/GetSklep.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/data/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/data/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/listeners/InventoryClickListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/listeners/InventoryClickListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/manager/ShopManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/manager/ShopManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/cmd/SklepCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/cmd/SklepCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/placeholder/TimePointsHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/gether/getsklep/placeholder/TimePointsHolder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DarkyenusTimeTracker">
+    <option name="totalTimeSeconds" value="5176" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -27,6 +30,14 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -126,7 +137,43 @@
       <workItem from="1689280337010" duration="1654000" />
       <workItem from="1689445774162" duration="2280000" />
       <workItem from="1689788411709" duration="2854000" />
-      <workItem from="1689795112718" duration="681000" />
+      <workItem from="1689795112718" duration="2187000" />
+      <workItem from="1689869746633" duration="880000" />
+      <workItem from="1689954620894" duration="1203000" />
+      <workItem from="1690147257998" duration="47000" />
+      <workItem from="1690577143336" duration="86000" />
+      <workItem from="1690580878486" duration="96000" />
+      <workItem from="1690824623694" duration="647000" />
+      <workItem from="1690828066374" duration="624000" />
+      <workItem from="1690989398231" duration="656000" />
+      <workItem from="1691611699728" duration="73000" />
+      <workItem from="1691689712312" duration="44000" />
+      <workItem from="1691699595637" duration="1303000" />
+      <workItem from="1692560650132" duration="215000" />
+      <workItem from="1692561382698" duration="137000" />
+      <workItem from="1693640018978" duration="484000" />
+      <workItem from="1694067559422" duration="14000" />
+      <workItem from="1694068589739" duration="601000" />
+      <workItem from="1695153606545" duration="186000" />
+      <workItem from="1695154458606" duration="298000" />
+      <workItem from="1695156580836" duration="356000" />
+      <workItem from="1695217875400" duration="31000" />
+      <workItem from="1695405242055" duration="69000" />
+      <workItem from="1696173131344" duration="624000" />
+      <workItem from="1696782589757" duration="7518000" />
+      <workItem from="1696804503645" duration="44000" />
+      <workItem from="1696851722606" duration="24000" />
+      <workItem from="1696892624637" duration="472000" />
+      <workItem from="1696920231981" duration="4218000" />
+      <workItem from="1696949198881" duration="2397000" />
+      <workItem from="1697042816762" duration="1133000" />
+      <workItem from="1697049163647" duration="641000" />
+      <workItem from="1697214766316" duration="4000" />
+      <workItem from="1697986737849" duration="2577000" />
+      <workItem from="1698016235438" duration="873000" />
+      <workItem from="1698089025822" duration="603000" />
+      <workItem from="1698143961826" duration="10000" />
+      <workItem from="1700679900539" duration="318000" />
     </task>
     <task id="LOCAL-00001" summary="1.0.1">
       <created>1688594113823</created>
@@ -163,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688813134088</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="1.0.5">
+      <created>1689795856877</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1689795856877</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,7 +228,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -184,6 +250,7 @@
     <MESSAGE value="1.0.1" />
     <MESSAGE value="1.0.2" />
     <MESSAGE value="1.0.4" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.0.4" />
+    <MESSAGE value="1.0.5" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.0.5" />
   </component>
 </project>

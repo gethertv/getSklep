@@ -2,6 +2,7 @@ package dev.gether.getsklep;
 
 import dev.gether.getsklep.cmd.SklepCmd;
 import dev.gether.getsklep.data.User;
+import dev.gether.getsklep.database.Database;
 import dev.gether.getsklep.database.SQLite;
 import dev.gether.getsklep.file.TimeFile;
 import dev.gether.getsklep.file.VaultFile;
@@ -21,12 +22,10 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.HashMap;
 import java.util.UUID;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class GetSklep extends JavaPlugin {
 
     private static GetSklep instance;
-    private static final Logger log = Logger.getLogger("Minecraft");
     private static Economy econ = null;
     private ShopManager shopManager;
 
@@ -38,7 +37,7 @@ public class GetSklep extends JavaPlugin {
         saveDefaultConfig();
 
         if (!setupEconomy() ) {
-            log.severe(String.format("[%s] - Disabled due to no Vault dependency found!", getDescription().getName()));
+            getServer().getLogger().severe(String.format("[%s] - Disabled due to no Vault dependency found!", getDescription().getName()));
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
@@ -49,9 +48,9 @@ public class GetSklep extends JavaPlugin {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
+
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)
             (new TimePointsHolder(this)).register();
-
 
         shopManager = new ShopManager(this);
 

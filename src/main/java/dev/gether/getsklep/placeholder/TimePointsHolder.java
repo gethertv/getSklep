@@ -35,11 +35,8 @@ public class TimePointsHolder extends PlaceholderExpansion {
         Player player = offlinePlayer.getPlayer();
         if(identifier.equalsIgnoreCase("points"))
         {
-
             return String.valueOf(plugin.getShopManager().getPlayerPoints(player));
         }
-
-
         return null;
     }
 }
