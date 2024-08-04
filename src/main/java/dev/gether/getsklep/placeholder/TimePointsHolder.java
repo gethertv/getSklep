@@ -30,6 +30,7 @@ public class TimePointsHolder extends PlaceholderExpansion {
         return "1.0";
     }
 
+    @Override
     public String onRequest(OfflinePlayer offlinePlayer, String identifier) {
         if (offlinePlayer.getPlayer() == null) return null;
         Player player = offlinePlayer.getPlayer();

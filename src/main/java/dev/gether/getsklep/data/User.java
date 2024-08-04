@@ -5,6 +5,7 @@ import dev.gether.getsklep.manager.ButtonManager;
 import dev.gether.getsklep.manager.ButtonType;
 import dev.gether.getsklep.manager.ShopManager;
 import dev.gether.getsklep.utils.ColorFixer;
+import dev.gether.getsklep.utils.PlayerUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -55,8 +56,28 @@ public class User {
         }
         GetSklep.getEcon().withdrawPlayer(player, price);
         ItemStack item = itemVault.getItemStack().clone();
-        item.setAmount(amount);
-        player.getInventory().addItem(item);
+
+        int rest = amount % item.getMaxStackSize();
+        int multiply = amount / item.getMaxStackSize();
+
+        if (multiply <= 0) {
+            item.setAmount(amount);
+            PlayerUtil.giveItem(player, item);
+        } else {
+            ItemStack baseItem = itemVault.getItemStack().clone();
+            for (int i = 0; i < multiply; i++) {
+                ItemStack stack = baseItem.clone();
+                stack.setAmount(stack.getMaxStackSize());
+                PlayerUtil.giveItem(player, stack);
+            }
+            if (rest != 0) {
+                ItemStack remainderItem = baseItem.clone();
+                remainderItem.setAmount(rest);
+                PlayerUtil.giveItem(player, remainderItem);
+            }
+        }
+
+
         player.sendMessage(ColorFixer.addColors(config.getString("lang.success-buy")
                 .replace("{price}", instance.getShopManager().getFormat(price))));
 

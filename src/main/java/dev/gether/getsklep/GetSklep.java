@@ -32,6 +32,7 @@ public class GetSklep extends JavaPlugin {
 
     private SQLite sqLite;
     private HashMap<UUID, Integer> userSpentPoints = new HashMap<>();
+    private TimePointsHolder timePointsHolder;
     @Override
     public void onEnable() {
         instance = this;
@@ -49,8 +50,10 @@ public class GetSklep extends JavaPlugin {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
-        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)
-            (new TimePointsHolder(this)).register();
+        if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            timePointsHolder = new TimePointsHolder(this);
+            timePointsHolder.register();
+        }
 
 
         shopManager = new ShopManager(this);
@@ -104,8 +107,11 @@ public class GetSklep extends JavaPlugin {
             saveUser();
             sqLite.disconnect();
         }
-        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)
-            (new TimePointsHolder(this)).unregister();
+        if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            if(timePointsHolder!=null) {
+                timePointsHolder.unregister();
+            }
+        }
 
         Bukkit.getScheduler().cancelTasks(this);
         HandlerList.unregisterAll(this);
